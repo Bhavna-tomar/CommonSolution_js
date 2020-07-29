@@ -1,5 +1,4 @@
-// var msg = 'Hello World';
-// console.log(msg);
+
 
 // =============================================================================
 //*-------- 1. function to get the duplicate values --------*
@@ -22,12 +21,16 @@ console.log(getDuplicates(arr));
 
 var arr= ["apple", "banana","orange", "lemon","apple","mango","lemon"];
 
+
+var start= new Date().getTime();
 function removeDuplicates(data){
     return [...new Set(arr)];
 }
+var end= new Date().getTime();
+var time =end-start;
 
 console.log(removeDuplicates(arr));
-
+console.log('Tottal Time taken' + time);
 // =============================================================================
 
 
