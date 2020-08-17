@@ -30,6 +30,6 @@ for(var i = 0; i < words.length; i++){
 //  console.log("newArr",newArr); // o/p= [ <1 empty item>, 'Thi1s', 'is2', '3a', 'T4est' ]
 
 result = newArr.join(" ");
-var withNoDigits = result.replace(/[0-9]/g, '');
+var resultWithNoDigits = result.replace(/[0-9]/g, '');
 
-console.log("result",withNoDigits);  // o/p= //Thi1s is2 3a T4est
+console.log("result",resultWithNoDigits);  // o/p= //Thi1s is2 3a T4est
