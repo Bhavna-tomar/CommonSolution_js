@@ -9,7 +9,7 @@ console.log("updated==========++",newArr);// initially []
 for(var i = 0; i < words.length; i++){ 
     
     for(var j = 0; j < words[i].length; j++){  
-              
+              // console.log("words[i].length", words[i].length);
         if(words[i][j] <= '9' && words[i][j] >= '0'){
 
             // var wordCount=words[i][j];
@@ -23,7 +23,7 @@ for(var i = 0; i < words.length; i++){
             
             // console.log("arr value", newArr[i]); 
         }
-        
+        // console.log("arr value", newArr[i]);
     }
 }
 
