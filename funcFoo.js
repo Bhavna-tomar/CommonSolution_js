@@ -31,10 +31,12 @@ var myObject = {
            // it will refer to window object.
           // In window obj foo is not defined, so it will give the output undefined
             console.log("inner func:  this.foo = " + this.foo);   
+
+         /*inner function can have access to the outer function variables 
+           as well as all the global variables*/
             console.log("inner func:  self.foo = " + self.foo); 
 
-        /*inner function can have access to the outer function variables 
-           as well as all the global variables*/
+       
         }());    
     }    
 };    
