@@ -36,7 +36,7 @@ console.log('Tottal Time taken' + time);
 
 const names=['John','Parul','Latif', 'Naman', 'Aksht','Parul','Sristhi','Latif','John'];
 
-
+var start= new Date().getTime();
 function removeDuplicates(names){
    
     let uniqueName=[];
@@ -49,5 +49,10 @@ function removeDuplicates(names){
     });
      return uniqueName;
 }
-   console.log(removeDuplicates(names));  
+var end= new Date().getTime();
+var time =end-start;
+
+
+   console.log(removeDuplicates(names)); 
+   console.log('Tottal Time taken' + time); 
  

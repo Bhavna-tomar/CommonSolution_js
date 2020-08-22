@@ -12,6 +12,7 @@
 //    sum();
 
 
+
 var myObject = { 
     foo: "bar",    
      func : function() {    
