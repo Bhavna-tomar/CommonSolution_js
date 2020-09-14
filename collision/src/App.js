@@ -88,7 +88,7 @@ function App() {
       //    }
 
 
-      if (intersect(s.x, s.y,  40, ss.x, ss.y,  40)){
+      if (intersect(s.x, s.y, 40, 40, ss.x, ss.y, 40, 40)){
         
         let vCollision = {x: ss.x - s.x, y: ss.y - s.y};
 
