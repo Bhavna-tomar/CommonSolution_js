@@ -73,6 +73,8 @@ function App() {
           //    console.log('collision Occures');
           // }
 
+
+
       //  if (intersect(s.x, s.y, s.vx, s.vy, ss.x, ss.y, ss.vx, ss.vy)){
       //        console.log('collision Occures');
       //     }
@@ -86,7 +88,7 @@ function App() {
       //    }
 
 
-      if (intersect(s.x, s.y, 40, 40, ss.x, ss.y, 40, 40)){
+      if (intersect(s.x, s.y,  40, ss.x, ss.y,  40)){
         
         let vCollision = {x: ss.x - s.x, y: ss.y - s.y};
 
