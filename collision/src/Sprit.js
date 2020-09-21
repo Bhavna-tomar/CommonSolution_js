@@ -5,6 +5,7 @@ export default function Sprit(props) {
 
   const [state, setstate] = useState({left:0,top:0});
 
+  
   useEffect(() => {
 
     if(props.data)
