@@ -11,7 +11,6 @@ function App() {
   const [container, setContainer] = useState({ height: 100 , width: 100});
 
   const damping = 0.90;
-  const bounce= 0.75;
   const g = 0.25;
   const radius =40;
   
@@ -25,8 +24,9 @@ function App() {
 
     setInterval(() => {
       const spritsSnapshot = sprits.map(s => ({...s}));
+     
       setSprits( ss => ss.map((s,index) =>{
-        console.log("ss", ss);
+        
         return getNextPosition(s,width , height, index, spritsSnapshot);
       }));
     }, fps);
@@ -49,33 +49,6 @@ function App() {
       s.vy = -s.vy;
     } 
 
-    // if (s.y + s.radius >= height) {
-    //   s.vy *= -s.bounce
-    //   s.y = height - s.radius
-    //   s.vx *= damping
-    // }
-
-    // // top bound 
-
-    // if (s.y - s.radius <= 0) {
-    //   s.vy *= -s.bounce
-    //   s.y = s.radius
-    //   s.vx *= damping
-    // }
-
-    // // left bound
-
-    // if (s.x - s.radius <= 0) {
-    //   s.vx *= -s.bounce
-    //   s.x = s.radius
-    // }
-    // // right bound
-
-    // if (s.x + s.radius >= width) {
-    //   s.velX *= -s.bounce
-    //   s.x =  width - s.radius
-    // }
-
     
     
     // Todo :You have to write code for collision here
@@ -90,60 +63,42 @@ function App() {
 
   for (let i = 0; i < sprits.length; i++)
   {
-     let s = sprits[i];
+     let obj1 = sprits[i];
     //  add for damping
     
 
-    if (s.x + radius >= width) {
-      s.vx = -s.vx * damping;
-      s.x = width - radius;
-    } else if (s.x - radius <= 0) {
-      s.vx = -s.vx * damping;
-      s.x = radius;
+    if (obj1.x + radius >= width) {
+      obj1.vx = -obj1.vx * damping;
+      obj1.x = width - radius;
+    } else if (obj1.x - radius <= 0) {
+      obj1.vx = -obj1.vx * damping;
+      obj1.x = radius;
     }
-    if (s.y + radius >= height) {
-      s.vy = -s.vy * damping;
-      s.y = height - radius;
+    if (obj1.y + radius >= height) {
+      obj1.vy = -obj1.vy * damping;
+      obj1.y = height - radius;
       
-    } else if (s.y - radius <= 0) {
-      s.vy = -s.vy * damping;
-      s.y = radius;
+    } else if (obj1.y - radius <= 0) {
+      obj1.vy = -obj1.vy * damping;
+      obj1.y = radius;
     }
 
     
-    // damping 
-
-
       for (let j = i + 1; j < sprits.length; j++)
       {
-       let   ss = sprits[j];
+       let   obj2 = sprits[j];
 
 
-          // if (intersect(s.x, s.y, s.vx, s.vy, ss.x, ss.y, ss.vx, ss.vy)){
-          //    console.log('collision Occures');
-          // }
-
-      //  if (intersect(s.x, s.y, s.vx, s.vy, ss.x, ss.y, ss.vx, ss.vy)){
-      //        console.log('collision Occures');
-      //     }
-      //     if (intersect(s.x, s.y, 40, 40, ss.x, ss.y, 40, 40)){
-      //       console.log('collision Occures'+i+','+j);
-      //       s.vx = -s.vx;
-      //       s.vy = -s.vy;
-      //       ss.vx = -ss.vx;
-      //       ss.vy = -ss.vy;
-      //       break;
-      //    }
-      
-      if (intersect(s.x, s.y, 40, 40, ss.x, ss.y, 40, 40)){
+      //comparision of two objects for collision 
+      if (intersect(obj1.x, obj1.y, 40, 40, obj2.x, obj2.y, 40, 40)){
         
-        let vCollision = {x: ss.x - s.x, y: ss.y - s.y};
+        let vCollision = {x: obj2.x - obj1.x, y: obj2.y - obj1.y};
 
-        let distance = Math.sqrt((ss.x-s.x)*(ss.x-s.x) + (ss.y-s.y)*(ss.y-s.y));
+        let distance = Math.sqrt((obj2.x-obj1.x)*(obj2.x-obj1.x) + (obj2.y-obj1.y)*(obj2.y-obj1.y));
       
         let vCollisionNorm = {x: vCollision.x / distance, y: vCollision.y / distance};
       
-        let vRelativeVelocity = {x: s.vx - ss.vx, y: s.vy - ss.vy};
+        let vRelativeVelocity = {x: obj1.vx - obj2.vx, y: obj1.vy - obj2.vy};
         let speed = vRelativeVelocity.x * vCollisionNorm.x + vRelativeVelocity.y * vCollisionNorm.y;
        
         // speed = speed  * Math.min(s.damping, ss.damping);
@@ -152,10 +107,10 @@ function App() {
           break;
       }
        
-      s.vx  -= (speed * vCollisionNorm.x);
-      s.vy  -= (speed * vCollisionNorm.y);
-      ss.vx += (speed * vCollisionNorm.x);
-      ss.vy += (speed * vCollisionNorm.y);
+      obj1.vx  -= (speed * vCollisionNorm.x);
+      obj1.vy  -= (speed * vCollisionNorm.y);
+      obj2.vx += (speed * vCollisionNorm.x);
+      obj2.vy += (speed * vCollisionNorm.y);
        
       }
       }
